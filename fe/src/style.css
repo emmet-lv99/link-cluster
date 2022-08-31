@@ -1,4 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@media (max-width: 500px) {
+  #app {
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    margin-top: unset !important;
+    border: unset;
+    border-radius: 0;
+  }
+}
 
 html {scroll-behavior: smooth;}
 html, body{margin: 0; padding: 0;}

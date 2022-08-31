@@ -1,24 +1,25 @@
 <template>
-  <section id="main-view">
-    <header class="main__header">
+  <section id="main-view" class="min-h-screen">
+    <header class="main__header h-20 p-4 flex justify-between bg-slate-800">
       <div class="utill-buttons__wrapper">
-        <el-button>미리보기</el-button>
-        <el-button>공유하기</el-button>
+        <el-button class="h-full" type="info" plain>미리보기</el-button>
+        <el-button class="h-full" type="info">공유하기</el-button>
       </div>
-      <nav class="drawer-menu__wrapper"></nav>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+      <nav class="drawer-menu__wrapper">
+        <el-button class="w-12 h-full" @click="drawer = true">
+          <el-icon><Menu /></el-icon>
+        </el-button>
+      </nav>
     </header>
   </section>
+  <el-drawer v-model="drawer" title="I am the title" :with-header="false">
+    <span>Hi there!</span>
+  </el-drawer>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+const drawer = ref(false)
+</script>
 
-<style lang="scss" scoped>
-#main-view {
-  min-height: 100vh;
-  .main__header {
-    height: 80px;
-    padding: 16px;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
