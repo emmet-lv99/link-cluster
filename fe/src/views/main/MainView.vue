@@ -39,7 +39,7 @@
                 />
               </div>
               <div class="profile-user__user-data ml-2.5">
-                <div class="user-data__id">user_id</div>
+                <div class="user-data__id font-bold">user_id</div>
                 <div class="user-data__url">user.url/path</div>
               </div>
             </div>
@@ -47,6 +47,10 @@
               <el-button class="flex-1">프로필 수정</el-button>
               <el-button class="flex-1">디자인 선택</el-button>
             </div>
+          </div>
+          <div class="main-content__link-items-wrapper">
+            <div class="link-items__nothing">링크가 없는</div>
+            <div class="link-items__sns-nothing">sns가 없는</div>
           </div>
         </div>
       </section>
