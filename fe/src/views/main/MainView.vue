@@ -1,3 +1,9 @@
+<!--
+TODO
+
+1. 메인 페이지 데이터 로딩 로직 넣을것 => 추후 서버에서 카드 데이터 목록 및 유저 정보 받아오는 역할
+-->
+
 <template>
   <section id="main-view" class="min-h-screen bg-purple-100">
     <header class="main__header h-20 p-4 flex justify-between bg-slate-800">
@@ -53,7 +59,12 @@
               class="link-items__nothing bg-white mt-4 rounded-xl text-center p-4"
             >
               <p>새 카드를 추가해보세요.</p>
-              <el-button class="w-full mt-4" size="large" icon="Files" round
+              <el-button
+                class="w-full mt-4"
+                size="large"
+                icon="Files"
+                round
+                @click="$router.push('make-card')"
                 >카드 추가</el-button
               >
             </div>
