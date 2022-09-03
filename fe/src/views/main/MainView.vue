@@ -50,7 +50,9 @@ TODO
               </div>
             </div>
             <div class="main__body-header-profile-edits flex">
-              <el-button class="flex-1">프로필 수정</el-button>
+              <el-button class="flex-1" @click="$router.push('edit-profile')"
+                >프로필 수정</el-button
+              >
               <el-button class="flex-1">디자인 선택</el-button>
             </div>
           </div>
