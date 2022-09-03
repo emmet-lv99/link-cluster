@@ -49,8 +49,17 @@
             </div>
           </div>
           <div class="main-content__link-items-wrapper">
-            <div class="link-items__nothing">링크가 없는</div>
-            <div class="link-items__sns-nothing">sns가 없는</div>
+            <div
+              class="link-items__nothing bg-white mt-4 rounded-xl text-center p-4"
+            >
+              <p>새 카드를 추가해보세요.</p>
+              <el-button class="w-full mt-4" size="large" icon="Files" round
+                >카드 추가</el-button
+              >
+            </div>
+            <div class="link-items__sns-nothing text-center mt-4">
+              <el-button round icon="Cpu" size="large">SNS 추가</el-button>
+            </div>
           </div>
         </div>
       </section>
