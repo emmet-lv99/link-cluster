@@ -8,7 +8,13 @@ TODO
   <section id="main-view" class="min-h-screen bg-purple-100">
     <header class="main__header h-20 p-4 flex justify-between bg-slate-800">
       <div class="utill-buttons__wrapper">
-        <el-button class="h-full" type="info" plain>미리보기</el-button>
+        <el-button
+          class="h-full"
+          type="info"
+          plain
+          @click="$router.push('preview-page')"
+          >미리보기</el-button
+        >
         <el-button class="h-full" type="info">공유하기</el-button>
       </div>
       <nav class="drawer-menu__wrapper">

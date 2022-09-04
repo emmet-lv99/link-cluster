@@ -3,6 +3,7 @@ import MainView from '../views/main/MainView.vue'
 import MakeCard from '../views/makeCard/MakeCard.vue'
 import EditProfile from '../views/editProfile/EditProfile.vue'
 import AddSns from '../views/addSns/AddSns.vue'
+import PreviewPage from '../views/previewPage/PreviewPage.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/add-sns',
     name: 'AddSns',
     component: AddSns,
+  },
+  {
+    path: '/preview-page',
+    name: 'PreviewPage',
+    component: PreviewPage,
   },
 ]
 
