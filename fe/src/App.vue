@@ -4,16 +4,7 @@
   </main>
 </template>
 
-<script setup>
-import axios from 'axios'
-
-// axios
-//   .get('/api/test')
-//   .then(response => {
-//     console.log(response)
-//   })
-//   .catch(e => console.log(e))
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 #app {
