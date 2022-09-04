@@ -71,7 +71,13 @@ TODO
               >
             </div>
             <div class="link-items__sns-nothing text-center mt-4">
-              <el-button round icon="Cpu" size="large">SNS 추가</el-button>
+              <el-button
+                round
+                icon="Cpu"
+                size="large"
+                @click="$router.push('add-sns')"
+                >SNS 추가</el-button
+              >
             </div>
           </div>
         </div>
