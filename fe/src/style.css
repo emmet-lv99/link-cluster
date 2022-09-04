@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {font-family: 'Nanum Gothic', sans-serif; font-weight: 400;}
+/*font 400, 700, 800*/
+
 @media (max-width: 500px) {
   #app {
     max-width: 100% !important;
