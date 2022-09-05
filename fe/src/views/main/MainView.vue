@@ -3,7 +3,6 @@ TODO
 
 1. 메인 페이지 데이터 로딩 로직 넣을것 => 추후 서버에서 카드 데이터 목록 및 유저 정보 받아오는 역할
 -->
-
 <template>
   <section id="main-view" class="min-h-screen bg-purple-100">
     <header class="main__header h-20 p-4 flex justify-between bg-slate-800">
@@ -96,8 +95,11 @@ TODO
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import axios from 'axios'
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 axios
   .get('/api/test')
