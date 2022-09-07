@@ -73,6 +73,7 @@
 <script setup>
 import { ref } from 'vue'
 const drawer = ref(false)
+console.log(1)
 </script>
 
 <style lang="scss" scoped></style>
