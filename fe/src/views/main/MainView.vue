@@ -99,6 +99,8 @@ import { computed, ref } from 'vue'
 import axios from 'axios'
 import { useStore } from 'vuex'
 
+console.log(1)
+
 const store = useStore()
 
 axios
