@@ -13,6 +13,7 @@ export default createStore({
     },
     checkLoading(state, payload) {
       state.loading = payload
+      console.log('loaded')
     },
   },
   actions: {
