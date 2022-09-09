@@ -1,5 +1,5 @@
 <template>
-  <section id="edit-profile">
+  <section id="edit-profile" v-loading="loading">
     <page-header
       page-title="프로필 수정"
       button-type="저장"
@@ -8,7 +8,7 @@
     <section>
       <div class="relative mb-16">
         <div
-          class="main__body-header-cover-img w-full relative before:content-[''] before:pt-56per before:block before:bg-blue-500 overflow-hidden"
+          class="main__body-header-cover-img w-full relative before:content-[''] before:pt-56per before:block overflow-hidden"
         >
           <img
             class="absolute top-0 left-1/2 translate-x-minus1/2 w-full h-full object-cover"
@@ -83,7 +83,11 @@
 
 <script setup>
 import PageHeader from '../commons/PageHeader.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useStore } from 'vuex'
+const store = useStore()
+const loading = computed(() => store.state.loading)
+
 const userBasicInfo = ref({
   userId: '',
   userUrl: '',
@@ -91,8 +95,18 @@ const userBasicInfo = ref({
 })
 
 const saveDataToVuex = () => {
-  console.log(userBasicInfo)
+  store.dispatch('emitUserBasicInfo', userBasicInfo.value)
 }
+
+store
+  .dispatch('getInitialDateFromServer')
+  .then(res => {
+    const auth = computed(() => res)
+    store.commit('checkLoading', false)
+  })
+  .catch(e => {
+    console.log(e)
+  })
 </script>
 
 <style lang="scss" scoped>

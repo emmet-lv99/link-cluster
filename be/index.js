@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port = 3000;
 
-const tmp = 'test message'
+const auth = {test : 'test message'}
 
-app.get('/api/test', (req, res) => {
-  res.send(tmp)
+app.get('/api/auth', (req, res) => {
+  res.send(auth)
 });
 
 app.listen(port, () => {
