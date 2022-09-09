@@ -87,6 +87,7 @@ import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
 const loading = computed(() => store.state.loading)
+const saveStatusFlag = false
 
 const userBasicInfo = ref({
   userId: '',
