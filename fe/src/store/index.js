@@ -17,7 +17,6 @@ export default createStore({
     },
     setUserBasicInfo(state, payload) {
       state.auth.userBasicInfo = payload
-      console.log(payload)
     },
   },
   actions: {
@@ -40,6 +39,14 @@ export default createStore({
     },
     emitUserBasicInfo({ commit }, payload) {
       commit('setUserBasicInfo', payload)
+      axios
+        .post('/api/setUserInfo', payload)
+        .then(res => {
+          if (res.status === 200) {
+            console.log('success')
+          }
+        })
+        .catch(e => console.log(e))
     },
   },
 })

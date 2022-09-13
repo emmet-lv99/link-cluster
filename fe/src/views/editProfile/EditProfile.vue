@@ -3,6 +3,7 @@
     <page-header
       page-title="프로필 수정"
       button-type="저장"
+      :save-status-flag="!(saveCheckUserId && saveCheckUserUrl)"
       @saveDate="saveDataToVuex"
     />
     <section>
@@ -64,6 +65,7 @@
           >
             <template #prepend>linkl.io/</template>
           </el-input>
+          <span v-if="!validationCheckUserUrl">유효성검사</span>
         </div>
         <div class="mt-12">
           <span class="text-xs">나의 링클 소개</span>
@@ -83,11 +85,14 @@
 
 <script setup>
 import PageHeader from '../commons/PageHeader.vue'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
+let saveCheckUserId = ref(false)
+let saveCheckUserUrl = ref(false)
 const loading = computed(() => store.state.loading)
-const saveStatusFlag = false
+
+let validationCheckUserUrl = ref(true)
 
 const userBasicInfo = ref({
   userId: '',
@@ -98,6 +103,24 @@ const userBasicInfo = ref({
 const saveDataToVuex = () => {
   store.dispatch('emitUserBasicInfo', userBasicInfo.value)
 }
+
+watch(
+  userBasicInfo,
+  (c, o) => {
+    const { userId, userUrl, userIntroduce } = c
+
+    if (userId != '') saveCheckUserId.value = true
+    else saveCheckUserId.value = false
+
+    const urlRegex =
+      /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|A-Z\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/
+    validationCheckUserUrl.value = !urlRegex.test(userUrl)
+    if (userUrl != '' && validationCheckUserUrl.value && userUrl.length >= 2)
+      saveCheckUserUrl.value = true
+    else saveCheckUserUrl.value = false
+  },
+  { deep: true },
+)
 
 store
   .dispatch('getInitialDateFromServer')

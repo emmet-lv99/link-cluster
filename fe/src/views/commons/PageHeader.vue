@@ -5,7 +5,7 @@
       <span>{{ pageTitle }}</span>
       <el-button
         v-if="!!buttonType"
-        disabled="saveStatusFlag"
+        :disabled="saveStatusFlag"
         text
         @click="saveData"
         >{{ buttonType }}</el-button
