@@ -50,10 +50,16 @@
               </div>
               <div class="profile-user__user-data ml-2.5">
                 <div class="user-data__id font-bold">
-                  {{ userBasicInfo.userId }}
+                  {{ userBasicInfo?.userId }}
                 </div>
                 <div class="user-data__url">
-                  {{ `user.url/${userBasicInfo.userUrl}` }}
+                  {{ `user.url/${userBasicInfo?.userUrl}` }}
+                </div>
+                <div
+                  v-if="!!userBasicInfo?.userIntroduce"
+                  class="user-data__introduce"
+                >
+                  {{ userBasicInfo?.userIntroduce }}
                 </div>
               </div>
             </div>
@@ -113,7 +119,7 @@ const loading = computed(() => store.state.loading)
 store
   .dispatch('getInitialDateFromServer')
   .then(res => {
-    userBasicInfo.value = res.userBasicInfo
+    userBasicInfo.value = res?.userBasicInfo
     store.commit('checkLoading', false)
   })
   .catch(e => {

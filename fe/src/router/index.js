@@ -1,4 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
+import InitialUserId from '../views/initialUserId/InitialUserId.vue'
+import InitialUserPath from '../views/initialUserPath/InitialUserPath.vue'
 import MainView from '../views/main/MainView.vue'
 import MakeCard from '../views/makeCard/MakeCard.vue'
 import EditProfile from '../views/editProfile/EditProfile.vue'
@@ -8,6 +10,16 @@ import PreviewPage from '../views/previewPage/PreviewPage.vue'
 const routes = [
   {
     path: '/',
+    name: 'InitialUserId',
+    component: InitialUserId,
+  },
+  {
+    path: '/path',
+    name: 'InitialUserPath',
+    component: InitialUserPath,
+  },
+  {
+    path: '/main',
     name: 'MainView',
     component: MainView,
   },
