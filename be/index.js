@@ -13,7 +13,7 @@ app.get('/api/auth', (req, res) => {
 });
 
 app.post('/api/setUserInfo', (req, res) => {
-  console.log(req.body.content)
+  auth.userBasicInfo = req.body
   res.send(auth)
 
 });

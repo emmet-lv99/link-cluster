@@ -1,8 +1,3 @@
-<!--
-TODO
-
-1. 메인 페이지 데이터 로딩 로직 넣을것 => 추후 서버에서 카드 데이터 목록 및 유저 정보 받아오는 역할
--->
 <template>
   <section
     id="main-view"
@@ -54,8 +49,12 @@ TODO
                 />
               </div>
               <div class="profile-user__user-data ml-2.5">
-                <div class="user-data__id font-bold">user_id</div>
-                <div class="user-data__url">user.url/path</div>
+                <div class="user-data__id font-bold">
+                  {{ userBasicInfo.userId }}
+                </div>
+                <div class="user-data__url">
+                  {{ `user.url/${userBasicInfo.userUrl}` }}
+                </div>
               </div>
             </div>
             <div class="main__body-header-profile-edits flex">
@@ -101,6 +100,11 @@ TODO
 <script setup>
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
+const userBasicInfo = ref({
+  userId: '',
+  userUrl: '',
+  userIntroduce: '',
+})
 
 const store = useStore()
 
@@ -109,7 +113,7 @@ const loading = computed(() => store.state.loading)
 store
   .dispatch('getInitialDateFromServer')
   .then(res => {
-    const auth = computed(() => store.state.auth)
+    userBasicInfo.value = res.userBasicInfo
     store.commit('checkLoading', false)
   })
   .catch(e => {

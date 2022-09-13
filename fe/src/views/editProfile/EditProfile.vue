@@ -125,7 +125,7 @@ watch(
 store
   .dispatch('getInitialDateFromServer')
   .then(res => {
-    const auth = computed(() => res)
+    userBasicInfo.value = res.userBasicInfo
     store.commit('checkLoading', false)
   })
   .catch(e => {
