@@ -69,17 +69,10 @@ const validationCheck = () => {
   if (initialId.value != '') successDialog.value = true
   else failDialog.value = true
 }
-const submit = () => {
-  store
-    .dispatch('emitInitialUserId', initialId.value)
-    .then(res => {
-      console.log(res)
-    })
-    .catch(e => {
-      console.log(e)
-    })
+const submit = async () => {
+  await store.dispatch('emitInitialUserId', initialId.value)
   successDialog.value = false
-  // router.push('/path')
+  router.push('/path')
 }
 </script>
 
