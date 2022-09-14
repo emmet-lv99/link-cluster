@@ -3,7 +3,11 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    auth: {},
+    auth: {
+      userBasicInfo: {
+        userId: '',
+      },
+    },
     loading: true,
   },
   getters: {},
@@ -17,6 +21,9 @@ export default createStore({
     },
     setUserBasicInfo(state, payload) {
       state.auth.userBasicInfo = payload
+    },
+    setInitialUserId(state, payload) {
+      state.auth.userBasicInfo.userId = payload
     },
   },
   actions: {
@@ -44,6 +51,19 @@ export default createStore({
         .then(res => {
           if (res.status === 200) {
             console.log('success')
+          }
+        })
+        .catch(e => console.log(e))
+    },
+    emitInitialUserId({ commit }, payload) {
+      return axios
+        .post('/api/setInitialUserId', { userId: payload })
+        .then(res => {
+          if (res.status === 200) {
+            commit('setInitialUserId', payload)
+            return res
+          } else {
+            throw new Error()
           }
         })
         .catch(e => console.log(e))
