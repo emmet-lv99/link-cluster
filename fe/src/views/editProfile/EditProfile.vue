@@ -3,7 +3,7 @@
     <page-header
       page-title="프로필 수정"
       button-type="저장"
-      :save-status-flag="!(saveCheckUserId && saveCheckUserUrl)"
+      :save-status-flag="!(saveCheckUserId && !saveCheckUserUrl)"
       @saveDate="saveDataToVuex"
     />
     <section>
@@ -65,7 +65,7 @@
           >
             <template #prepend>linkl.io/</template>
           </el-input>
-          <span v-if="!validationCheckUserUrl">유효성검사</span>
+          <span v-if="saveCheckUserUrl">유효성검사</span>
         </div>
         <div class="mt-12">
           <span class="text-xs">나의 링클 소개</span>
@@ -116,8 +116,8 @@ watch(
       /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|A-Z\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/
     validationCheckUserUrl.value = !urlRegex.test(userUrl)
     if (userUrl != '' && validationCheckUserUrl.value && userUrl.length >= 2)
-      saveCheckUserUrl.value = true
-    else saveCheckUserUrl.value = false
+      saveCheckUserUrl.value = false
+    else saveCheckUserUrl.value = true
   },
   { deep: true },
 )

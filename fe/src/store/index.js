@@ -6,6 +6,8 @@ export default createStore({
     auth: {
       userBasicInfo: {
         userId: '',
+        userUrl: '',
+        userIntroduce: '',
       },
     },
     loading: true,
@@ -24,6 +26,9 @@ export default createStore({
     },
     setInitialUserId(state, payload) {
       state.auth.userBasicInfo.userId = payload
+    },
+    setInitialUserPath(state, payload) {
+      state.auth.userBasicInfo.userUrl = payload
     },
   },
   actions: {
@@ -61,6 +66,19 @@ export default createStore({
         .then(res => {
           if (res.status === 200) {
             commit('setInitialUserId', payload)
+            return res
+          } else {
+            throw new Error()
+          }
+        })
+        .catch(e => console.log(e))
+    },
+    emitInitialUserPath({ commit }, payload) {
+      return axios
+        .post('/api/setInitialUserPath', { userUrl: payload })
+        .then(res => {
+          if (res.status === 200) {
+            commit('setInitialUserPath', payload)
             return res
           } else {
             throw new Error()

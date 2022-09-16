@@ -6,7 +6,9 @@ const bodyParser = require('body-parser')
 
 const auth = {
   userBasicInfo: {
-    userId: ''
+    userId: '',
+    userUrl: '',
+    userIntroduce: ''
   }
 }
 
@@ -23,6 +25,11 @@ app.post('/api/setUserInfo', (req, res) => {
 
 app.post('/api/setInitialUserId', (req, res) => {
   auth.userBasicInfo.userId = req.body.userId
+  res.send(auth)
+});
+
+app.post('/api/setInitialUserPath', (req, res) => {
+  auth.userBasicInfo.userUrl = req.body.userUrl
   res.send(auth)
 });
 

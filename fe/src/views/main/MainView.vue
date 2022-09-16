@@ -119,6 +119,7 @@ const loading = computed(() => store.state.loading)
 store
   .dispatch('getInitialDateFromServer')
   .then(res => {
+    console.log(res)
     userBasicInfo.value = res?.userBasicInfo
     store.commit('checkLoading', false)
   })
