@@ -1,11 +1,11 @@
 <template>
   <nav id="page-header">
-    <div class="flex items-center justify-between p-4">
+    <div class="flex items-center justify-between p-4 bg-white">
       <el-button icon="Back" text @click="router.go(-1)" />
       <span>{{ pageTitle }}</span>
       <el-button
         v-if="!!buttonType"
-        :disabled="saveStatusFlag"
+        :disabled="buttonDisabledFlag"
         text
         @click="saveData"
         >{{ buttonType }}</el-button
@@ -27,15 +27,15 @@ defineProps({
     type: String,
     required: false,
   },
-  saveStatusFlag: {
+  buttonDisabledFlag: {
     type: Boolean,
     default: true,
   },
 })
-const emits = defineEmits(['saveDate'])
+const emits = defineEmits(['emitFromPageHeader'])
 
 const saveData = () => {
-  emits('saveDate')
+  emits('emitFromPageHeader')
 }
 </script>
 

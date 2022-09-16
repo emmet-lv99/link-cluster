@@ -3,8 +3,8 @@
     <page-header
       page-title="프로필 수정"
       button-type="저장"
-      :save-status-flag="!(saveCheckUserId && !saveCheckUserUrl)"
-      @saveDate="saveDataToVuex"
+      :button-disabled-flag="!(saveCheckUserId && !saveCheckUserUrl)"
+      @emitFromPageHeader="saveDataToVuex"
     />
     <section>
       <div class="relative mb-16">
