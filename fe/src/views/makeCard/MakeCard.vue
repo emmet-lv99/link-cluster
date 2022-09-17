@@ -7,7 +7,12 @@
       @emitFromPageHeader="router.go(-1)"
     />
     <section class="p-4">
-      <article class="w-full"></article>
+      <article class="flex w-full items-center bg-white rounded-xl">
+        <div class="w-20 h-20 p-1 mr-2">
+          <div class="w-full h-full bg-gray-100 rounded-xl"></div>
+        </div>
+        <div class="flex-1 text-center font-bold">링크 카드</div>
+      </article>
     </section>
   </section>
 </template>
